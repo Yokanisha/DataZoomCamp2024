@@ -28,3 +28,8 @@
   - Plan - What am I about to do?
   - Apply - DOi what is in the tf (terraform) files
   - Destroy - Remove everything defindes in the tf files
+
+##Status
+- I am at 1.3.2 11:00
+- I couldnt  install "terraform fmt" since I didn't install it.
+- I will watch first 1.4.1
