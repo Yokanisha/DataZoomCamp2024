@@ -39,7 +39,7 @@ What is version of the package *wheel* ?
 - 58.1.0
 
 ### Answer
-```
+```bash
 Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_1_basics_n_setup/2_docker_sql
 $ winpty docker run -it --entrypoint=bash python:3.9
 root@cf9f6318b6f4:/# pip list
@@ -81,7 +81,7 @@ The names of the column two `lpep_pickup_datetime` and column three `lpep_dropof
 
 After I can run the follow script:
 
-```
+```bash
 URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz"
 winpty docker build -t taxi_ingest:v001 .
 winpty docker run -it \
@@ -113,7 +113,7 @@ Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in 
 ### Approach
 Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format DATETIME (YYYY-MM-DD HH:MI:SS) and not in DATE (YYYY-MM-DD).
 
-```
+```sql
 SELECT COUNT(*) FROM green_taxi_trips
 WHERE DATE(lpep_pickup_datetime) = '2019-09-18';
 ```
@@ -131,10 +131,10 @@ Use the pick up time for your calculations.
 
 
 ### Approach
-```
-SELECT *, trip_distance FROM green_taxi_trips
-ORDER BY trip_distance desc
-LIMIT 1;
+```sql
+SELECT DATE(lpep_pickup_datetime), MAX(trip_distance) AS MAX_trip_distance_per_day FROM green_taxi_trips
+GROUP BY DATE(lpep_pickup_datetime)
+ORDER BY MAX_trip_distance_per_day DESC;
 ```
 
 
@@ -148,6 +148,16 @@ Which were the 3 pick up Boroughs that had a sum of total_amount superior to 500
 - "Bronx" "Brooklyn" "Manhattan"
 - "Bronx" "Manhattan" "Queens" 
 - "Brooklyn" "Queens" "Staten Island"
+
+### Approach
+not right but an approach
+
+```sql
+SELECT total_amount, * FROM green_taxi_trips AS taxi
+LEFT JOIN zones
+ON taxi."PULocationID" = zones."LocationID"
+AND taxi."DOLocationID" = zones."LocationID"
+```
 
 
 ## Question 6. Largest tip
