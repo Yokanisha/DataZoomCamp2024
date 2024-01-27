@@ -126,8 +126,16 @@ Use the pick up time for your calculations.
 
 - 2019-09-18
 - 2019-09-16
-- 2019-09-26
+- 2019-09-26 :thumbsup:
 - 2019-09-21
+
+
+### Approach
+```
+SELECT *, trip_distance FROM green_taxi_trips
+ORDER BY trip_distance desc
+LIMIT 1;
+```
 
 
 ## Question 5. Three biggest pick up Boroughs
