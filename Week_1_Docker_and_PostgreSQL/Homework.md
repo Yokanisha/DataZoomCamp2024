@@ -105,10 +105,19 @@ Tip: started and finished on 2019-09-18.
 
 Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format timestamp (date and hour+min+sec) and not in date.
 
-- 15767
+- 15767 :thumbsup:
 - 15612
 - 15859
 - 89009
+
+### Approach
+Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format DATETIME (YYYY-MM-DD HH:MI:SS) and not in DATE (YYYY-MM-DD).
+
+```
+SELECT COUNT(*) FROM green_taxi_trips
+WHERE DATE(lpep_pickup_datetime) = '2019-09-18';
+```
+
 
 ## Question 4. Largest trip for each day
 
