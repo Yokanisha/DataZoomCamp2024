@@ -20,10 +20,10 @@ Do the same for "docker run".
 
 Which tag has the following text? - *Automatically remove the container when it exits* 
 
-- `--delete`
+- `--delete` 
 - `--rc`
 - `--rmc`
-- `--rm`
+- `--rm` :thumbsup:
 
 
 ## Question 2. Understanding docker first run 
