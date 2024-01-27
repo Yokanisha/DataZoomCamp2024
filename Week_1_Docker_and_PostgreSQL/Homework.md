@@ -38,16 +38,21 @@ What is version of the package *wheel* ?
 - 23.0.1
 - 58.1.0
 
-### Approach
-1) Change in your Dockerfile the entrypoint to : `ENTRYPOINT [ "bash" ]`
+### Answer
+```
+Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_1_basics_n_setup/2_docker_sql
+$ winpty docker run -it --entrypoint=bash python:3.9
+root@cf9f6318b6f4:/# pip list
+Package    Version
+---------- -------
+pip        23.0.1
+setuptools 58.1.0
+wheel      0.42.0
 
-2) Build a docker-image: `winpty docker build -t my-python-app .`
-
-3) Run the container in interactive mode with the bash entry point: `docker run -it my-python-app`
-
-4) `pip list` or `pip show wheel`
-
-Finally) You can see the wheel version. In my case it was `0.37.1` which is not listet in the answer. But here `https://pypi.org/project/wheel/#history` you can see a list of the history versions. For that reason the answer must be `0.42.0`.
+[notice] A new release of pip is available: 23.0.1 -> 23.3.2
+[notice] To update, run: pip install --upgrade pip
+root@cf9f6318b6f4:/#
+```
 
 
 
