@@ -69,6 +69,33 @@ You will also need the dataset with zones:
 
 Download this data and put it into Postgres (with jupyter notebooks or with a pipeline)
 
+### Approach
+
+I need to check if the column names are the same or different:
+```
+import pandas as pd
+df = pd.read_csv('D:/DE-ZoomCamp/week_1_basics_n_setup/2_docker_sql/Daten/green_tripdata_2019-09.csv', nrows=100)
+df.head()
+```
+The names of the column two `lpep_pickup_datetime` and column three `lpep_dropoff_datetime` were different. So I need to change the names of my `ingest_data.py` file.
+
+After I can run the follow script:
+
+```
+URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz"
+winpty docker build -t taxi_ingest:v001 .
+winpty docker run -it \
+    --network=pg-network \
+    taxi_ingest:v001 \
+    --user=root \
+    --password=root \
+    --host=pg-database \
+    --port=5432 \
+    --db=ny_taxi \
+    --table_name=green_taxi_trips \
+    --url="${URL}"
+```
+The file `https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv` is already in the database from the previous tutorial.
 
 ## Question 3. Count records 
 
