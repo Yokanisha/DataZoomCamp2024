@@ -38,6 +38,18 @@ What is version of the package *wheel* ?
 - 23.0.1
 - 58.1.0
 
+### Approach
+1) Change in your Dockerfile the entrypoint to : `ENTRYPOINT [ "bash" ]`
+
+2) Build a docker-image: `winpty docker build -t my-python-app .`
+
+3) Run the container in interactive mode with the bash entry point: `docker run -it my-python-app`
+
+4) `pip list` or `pip show wheel`
+
+Finally) You can see the wheel version. In my case it was `0.37.1` which is not listet in the answer.
+
+
 
 # Prepare Postgres
 
