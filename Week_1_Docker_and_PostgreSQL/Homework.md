@@ -33,7 +33,7 @@ Now check the python modules that are installed ( use ```pip list``` ).
 
 What is version of the package *wheel* ?
 
-- 0.42.0
+- 0.42.0 :thumbsup:
 - 1.0.0
 - 23.0.1
 - 58.1.0
@@ -47,7 +47,7 @@ What is version of the package *wheel* ?
 
 4) `pip list` or `pip show wheel`
 
-Finally) You can see the wheel version. In my case it was `0.37.1` which is not listet in the answer.
+Finally) You can see the wheel version. In my case it was `0.37.1` which is not listet in the answer. But here `https://pypi.org/project/wheel/#history` you can see a list of the history versions. For that reason the answer must be `0.42.0`.
 
 
 
