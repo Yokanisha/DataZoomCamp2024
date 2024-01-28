@@ -24,7 +24,23 @@ Paste the output of this command into the homework submission form.
 
 ## Answered
 
-After command `terraform apply -var="project=<your-gcp-project-id>"`:
+```bash
+# Refresh service-account's auth-token for this session
+gcloud auth application-default login
+
+# Initialize state file (.tfstate)
+terraform init
+
+# Check changes to new infra plan
+terraform plan -var="project=<your-gcp-project-id>"
+```
+
+```bash
+# Create new infra
+terraform apply -var="project=<your-gcp-project-id>"
+```
+
+#### The output
 
 ```bash
 Armut@Armut-PC MINGW64 ~/Desktop/ZoomCamp-GCP
@@ -100,9 +116,21 @@ google_storage_bucket.demo-bucket: Modifications complete after 0s [id=evident-b
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 
 ```
-do `terraform destroy`.
 
-do `terraform apply`:
+```bash
+# Delete infra after your work, to avoid costs on any running services
+terraform destroy
+```
+
+### Here the homework solution
+
+After updating the main.tf and variable.tf files run:
+
+```
+terraform apply
+```
+
+#### Here the output
 
 ````bash
 Armut@Armut-PC MINGW64 ~/Desktop/ZoomCamp-GCP
