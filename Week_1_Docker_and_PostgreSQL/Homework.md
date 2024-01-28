@@ -144,7 +144,7 @@ Consider lpep_pickup_datetime in '2019-09-18' and ignoring Borough has Unknown
 
 Which were the 3 pick up Boroughs that had a sum of total_amount superior to 50000?
  
-- "Brooklyn" "Manhattan" "Queens"
+- "Brooklyn" "Manhattan" "Queens" :thumbsup:
 - "Bronx" "Brooklyn" "Manhattan"
 - "Bronx" "Manhattan" "Queens" 
 - "Brooklyn" "Queens" "Staten Island"
@@ -153,10 +153,13 @@ Which were the 3 pick up Boroughs that had a sum of total_amount superior to 500
 not right but an approach
 
 ```sql
-SELECT total_amount, * FROM green_taxi_trips AS taxi
-LEFT JOIN zones
-ON taxi."PULocationID" = zones."LocationID"
-AND taxi."DOLocationID" = zones."LocationID"
+SELECT zones."Borough" AS Pickup_Borough, SUM(green_taxi_trips.total_amount) AS Total_Amount
+FROM green_taxi_trips
+JOIN zones ON green_taxi_trips."PULocationID" = zones."LocationID"
+WHERE DATE(green_taxi_trips.lpep_pickup_datetime) = '2019-09-18'
+GROUP BY zones."Borough"
+HAVING SUM(green_taxi_trips."total_amount") >= 50000
+ORDER BY Total_Amount DESC
 ```
 
 
