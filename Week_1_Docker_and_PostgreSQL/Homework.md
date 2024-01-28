@@ -150,7 +150,6 @@ Which were the 3 pick up Boroughs that had a sum of total_amount superior to 500
 - "Brooklyn" "Queens" "Staten Island"
 
 ### Approach
-not right but an approach
 
 ```sql
 SELECT zones."Borough" AS Pickup_Borough, SUM(green_taxi_trips.total_amount) AS Total_Amount
@@ -160,8 +159,8 @@ WHERE DATE(green_taxi_trips.lpep_pickup_datetime) = '2019-09-18'
 GROUP BY zones."Borough"
 HAVING SUM(green_taxi_trips."total_amount") >= 50000
 ORDER BY Total_Amount DESC
+LIMIT 3;
 ```
-
 
 ## Question 6. Largest tip
 
@@ -172,5 +171,21 @@ Note: it's not a typo, it's `tip` , not `trip`
 
 - Central Park
 - Jamaica
-- JFK Airport
+- JFK Airport :thumbsup:
 - Long Island City/Queens Plaza
+
+### Approach
+
+```sql
+SELECT zones_dropoff."Zone" AS Dropoff_Zone, MAX(green_taxi_trips.tip_amount) AS Max_Tip_Amount
+FROM green_taxi_trips
+JOIN zones AS zones_pickup ON green_taxi_trips."PULocationID" = zones_pickup."LocationID"
+JOIN zones AS zones_dropoff ON green_taxi_trips."DOLocationID" = zones_dropoff."LocationID"
+WHERE DATE(green_taxi_trips.lpep_pickup_datetime) >= '2019-09-01'
+  AND DATE(green_taxi_trips.lpep_pickup_datetime) <= '2019-09-30'
+  AND zones_pickup."Zone" = 'Astoria'
+GROUP BY zones_dropoff."Zone"
+ORDER BY Max_Tip_Amount DESC
+LIMIT 1;
+```
+
