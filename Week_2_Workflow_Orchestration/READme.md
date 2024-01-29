@@ -4,9 +4,8 @@
 
 In this section, we'll cover the basics of workflow orchestration. We'll discuss what it is, why it's important, and how it can be used to build data pipelines.
 
-Notes
+### Notes
 - https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/001.PNG
--
 
 ### Architecture
 #### Extract
@@ -50,19 +49,53 @@ The developer experience
 
 In this section, we'll introduce the Mage platform. We'll cover what makes Mage different from other orchestrators, the fundamental concepts behind Mage, and how to get started. To cap it off, we'll spin Mage up via Docker 🐳 and run a simple pipeline.
 
-Notes
--
--
--
+### Notes
+#### What is Mage?
+- An open-source pipeline tool for orchestrating, transforming, and integrating data
+![What is Mage?](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/002.PNG)
+
+#### 👨🏻‍💻 Engineering best-practices built-in 
+- 🧪 In-line testing and debugging
+  - Familiar, notebook-style format
+- 🔎 Fully-featured observability
+  - Transformation in one place: dbt models, streaming, & more.
+- 🏜️ DRY principles
+  - No more 🍝 DAGs with duplicate functions and weird imports
+  - DEaaS (sorry, I had to 😅)
+
+#### 🏗️ Projects
+- A project forms the basis for all the work you can do in Mage— you can think of it like a GitHub repo. 
+- It contains the code for all of your pipelines, blocks, and other assets.
+- A Mage instance has one or more projects
+
+#### 🧪 Pipelines
+
+- A pipeline is a workflow that executes some data operation— maybe extracting, transforming, and loading data from an API. They’re also called DAGs on other platforms
+- In Mage, pipelines can contain Blocks (written in SQL, Python, or R) and charts. 
+- Each pipeline is represented by a YAML file in the “pipelines” folder of your project.
+
+#### 🧱 Blocks
+- A block is a file that can be executed independently or within a pipeline. 
+- Together, blocks form Directed Acyclic Graphs (DAGs), which we call pipelines. 
+- A block won’t start running in a pipeline until all its upstream dependencies are met.
+- Blocks are reusable, atomic pieces of code that perform certain actions. 
+- Changing one block will change it everywhere it’s used, but don’t worry, it’s easy to detach blocks to separate instances if necessary.
+- Blocks can be used to perform a variety of actions, from simple data transformations to complex machine learning models.
+
+
+
+
+
 
 ### 2.2.3 - 🐘 ETL: API to Postgres
 
 Hooray! Mage is up and running. Now, let's build a _real_ pipeline. In this section, we'll build a simple ETL pipeline that loads data from an API into a Postgres database. Our database will be built using Docker— it will be running locally, but it's the same as if it were running in the cloud.
 
-Notes
+### Notes
 -
 -
 -
+
 
 
 ### 2.2.4 - 🤓 ETL: API to GCS
