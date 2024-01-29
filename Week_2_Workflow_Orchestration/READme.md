@@ -82,6 +82,15 @@ In this section, we'll introduce the Mage platform. We'll cover what makes Mage 
 - Changing one block will change it everywhere it’s used, but don’t worry, it’s easy to detach blocks to separate instances if necessary.
 - Blocks can be used to perform a variety of actions, from simple data transformations to complex machine learning models.
 
+### Configure mage
+- git clone https://github.com/mage-ai/mage-zoomcamp.git mage-zoomcamp
+- cd mage-zoomcamp
+- ls -la
+- cp dev.env .env
+- winpty compose build
+- winpty pull mageai/mageai:latest
+- winpty docker-compose up
+Now, navigate to http://localhost:6789 in your browser!
 
 
 
