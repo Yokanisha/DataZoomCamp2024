@@ -5,9 +5,44 @@
 In this section, we'll cover the basics of workflow orchestration. We'll discuss what it is, why it's important, and how it can be used to build data pipelines.
 
 Notes
+- https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/001.PNG
 -
--
--
+
+### Architecture
+#### Extract
+- Pull data from a source (API - NYC taxi dataset)
+#### Transform
+- Data clkeaning, transformation and partitioning
+#### Load
+- API to Mage, Mage to Postgres, GCS, BigQuery
+
+  
+![What we wanna do](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/001.PNG)
+
+#### What is Orchestration?
+- A large part of data engineering is extracting, transforming, and loading data between sources.
+- Orchestration is a process of dependency management, facilitated through automation. 
+- The data orchestrator manages scheduling, triggering, monitoring, and even resource allocation. 
+
+#### A good orchestrator handles…
+- Workflow management
+- Automation
+- Error handling 
+- Recovery
+- Monitoring, alerting
+- Resource optimization
+- Observability
+- Debugging
+- Compliance/Auditing
+
+#### A good orchestrator prioritizes….
+The developer experience
+- Flow state 🌊
+  “I need to switch between 7 tools/services.”
+- Feedback Loops 🔁
+  “I spent 5 hours locally testing this DAG.”
+- Cognitive Load 🧱
+  How much do you need to know to do your job?
 
 
 
