@@ -87,13 +87,10 @@ In this section, we'll introduce the Mage platform. We'll cover what makes Mage 
 - cd mage-zoomcamp
 - ls -la
 - cp dev.env .env
-- winpty compose build
-- winpty pull mageai/mageai:latest
+- winpty docker-compose build
+- docker pull mageai/mageai:latest
 - winpty docker-compose up
 Now, navigate to http://localhost:6789 in your browser!
-
-
-
 
 
 ### 2.2.3 - 🐘 ETL: API to Postgres
@@ -104,6 +101,8 @@ Hooray! Mage is up and running. Now, let's build a _real_ pipeline. In this sect
 -
 -
 -
+
+
 
 
 
