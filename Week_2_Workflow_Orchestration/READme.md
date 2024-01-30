@@ -98,12 +98,7 @@ Now, navigate to http://localhost:6789 in your browser!
 Hooray! Mage is up and running. Now, let's build a _real_ pipeline. In this section, we'll build a simple ETL pipeline that loads data from an API into a Postgres database. Our database will be built using Docker— it will be running locally, but it's the same as if it were running in the cloud.
 
 ### Notes
--
--
--
-
-
-
+- We have learned the `ETL`-process in this course.
 
 
 ### 2.2.4 - 🤓 ETL: API to GCS
