@@ -143,16 +143,15 @@ We learned
 - How to `load` the data in gcp 
 
 
-
-
 ### 2.2.5 - 🔍 ETL: GCS to BigQuery
 
 Now that we've written data to GCS, let's load it into BigQuery. In this section, we'll walk through the process of using Mage to load our data from GCS to BigQuery. This closely mirrors a very common data engineering workflow: loading data from a data lake into a data warehouse.
 
-Notes
--
--
--
+We learned
+- How to `extract` data from an gcp bucket
+- How to `transform` the data in mage
+- How to `load` the data in BigQuery 
+
 
 ### 2.2.6 - 👨‍💻 Parameterized Execution
 
