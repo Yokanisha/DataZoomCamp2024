@@ -112,6 +112,36 @@ Notes
 -
 -
 
+#### Configuring GCP
+- create a bucket (google cloud storage) # I choosed the name `mage-zoomcamp-matt-palmer-1`
+- create a service account (IAM & ADMIN -> create service account) # I choosed the name `mage-zoomcamp`
+  - Role -> basics -> owner -> continue
+  - Choose in the register 'KEYS' and create a new Key (JSON) -> Save it into the mage project
+- Go to mage -> File -> io_config.yaml
+    - Go to `#Google` ->  Delete all under 'Google' except these two and fill the correct path to your json-key-file and location which you choosed when you created you bucket (under `Choose where to store your data`)
+ 
+```mage
+  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/evident-beacon-412117-da61e3f2a3ed.json"
+  GOOGLE_LOCATION: EU # Optional
+```
+
+- Go to mage -> test_config -> create a SQL-Loader (BigQuery and default) -> 'SELECT 1; -> does it work? -> yes? -> good! :) You can delete it
+- Go to GCP to your bucket -> put  your `titanic_clean.csv` in it.
+- Go to mage -> Create a data loader (SQL -> Python -> Google Cloud Storage)
+    - change `bucket_name` and `object_key`
+
+```SQL
+@data_loader
+def load_from_google_cloud_storage(*args, **kwargs):
+    ...
+    bucket_name = 'mage-zoomcamp-matt-palmer-1'
+    object_key = 'titanic_clean.csv'
+    ...
+```
+- run and see if it works.
+
+
+
 ### 2.2.5 - 🔍 ETL: GCS to BigQuery
 
 Now that we've written data to GCS, let's load it into BigQuery. In this section, we'll walk through the process of using Mage to load our data from GCS to BigQuery. This closely mirrors a very common data engineering workflow: loading data from a data lake into a data warehouse.
