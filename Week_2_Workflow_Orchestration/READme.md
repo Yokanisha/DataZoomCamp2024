@@ -107,11 +107,6 @@ Ok, so we've written data _locally_ to a database, but what about the cloud? In 
 
 We'll cover both writing _partitioned_ and _unpartitioned_ data to GCS and discuss _why_ you might want to do one over the other. Many data teams start with extracting data from a source and writing it to a data lake _before_ loading it to a structured data source, like a database.
 
-Notes
--
--
--
-
 #### Configuring GCP
 - create a bucket (google cloud storage) # I choosed the name `mage-zoomcamp-matt-palmer-1`
 - create a service account (IAM & ADMIN -> create service account) # I choosed the name `mage-zoomcamp`
@@ -139,6 +134,14 @@ def load_from_google_cloud_storage(*args, **kwargs):
     ...
 ```
 - run and see if it works.
+
+
+#### ETL: API to GCP
+We learned
+- How to `extract` data from an URL path in mage
+- How to `transform` the data in mage
+- How to `load` the data in gcp 
+
 
 
 
