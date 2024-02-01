@@ -99,8 +99,47 @@ Upon filtering the dataset where the passenger count is greater than 0 _and_ the
 
 * 544,897 rows
 * 266,855 rows
-* 139,370 rows
+* 139,370 rows 👍
 * 266,856 rows
+
+```python
+if 'transformer' not in globals():
+    from mage_ai.data_preparation.decorators import transformer
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+@transformer
+def transform(data, *args, **kwargs):
+    print(f"Preprocessing: rows with zero passengers: {data['passenger_count'].isin([0]).sum()}")
+
+    data_passenger = data[data['passenger_count'] > 0]
+    data = data_passenger[data_passenger['trip_distance'] > 0]
+
+    return data
+
+
+@test
+def test_output_passenger_count(output, *args) -> None:
+    """
+    Template code for testing the output of the block.
+    """
+    assert output['passenger_count'].isin([0]).sum() == 0, 'There are rides with zero passengers'
+
+@test
+def test_output_trip_distance(output, *args) -> None:
+    """
+    Template code for testing the output of the block.
+    """
+    assert output['trip_distance'].isin([0]).sum() == 0, 'There are rides with zero passengers'
+
+@test
+def test_output(output, *args) -> None:
+    """
+    Template code for testing the output of the block.
+    """
+    assert output is not None, 'The output is undefined'
+
+```
 
 ## Question 3. Data Transformation
 
