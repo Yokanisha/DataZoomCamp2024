@@ -183,15 +183,10 @@ Notes
   - Cloud Run developer
   - Cloud SQL Admin
   - Service Account Token Creator
-
-
-
-
-
-
-
-
-
+ 
+#### Deploying to Google Cloud
+- We need it for our final Porject!
+- make sure to install and config Terraform first!
 
 
 ### 2.2.8 - 🗒️ Homework 
