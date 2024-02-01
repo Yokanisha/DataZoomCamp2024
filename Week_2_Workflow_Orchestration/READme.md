@@ -116,7 +116,7 @@ We'll cover both writing _partitioned_ and _unpartitioned_ data to GCS and discu
     - Go to `#Google` ->  Delete all under 'Google' except these two and fill the correct path to your json-key-file and location which you choosed when you created you bucket (under `Choose where to store your data`)
  
 ```mage
-  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/evident-beacon-412117-da61e3f2a3ed.json"
+  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/evident-beacon-XXXX-YYYYY.json"
   GOOGLE_LOCATION: EU # Optional
 ```
 
