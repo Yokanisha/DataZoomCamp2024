@@ -158,18 +158,41 @@ We learned
 By now you're familiar with building pipelines, but what about adding parameters? In this video, we'll discuss some built-in runtime variables that exist in Mage and show you how to define your own! We'll also cover how to use these variables to parameterize your pipelines. Finally, we'll talk about what it means to *backfill* a pipeline and how to do it in Mage.
 
 Notes
--
--
--
+- [Mage Variables Overview](https://docs.mage.ai/development/variables/overview)
+- [Mage Runtime Variables](https://docs.mage.ai/getting-started/runtime-variable)
 
 ### 2.2.7 - 🤖 Deployment (Optional)
 
 In this section, we'll cover deploying Mage using Terraform and Google Cloud. This section is optional— it's not *necessary* to learn Mage, but it might be helpful if you're interested in creating a fully deployed project. If you're using Mage in your final project, you'll need to deploy it to the cloud.
 
 Notes
--
--
--
+
+
+#### Prerequisit
+- Terraform
+- gcloud cli
+- Google Cloud Permissions
+- Mage Terraform templates
+
+#### Permissions we need
+- Go to `IAM` in Google Cloud and eddit your project
+- Assign roles which you only need:
+  - Owner
+  - Artifact Registry Reader
+  - Artifact Registry Writer
+  - Cloud Run developer
+  - Cloud SQL Admin
+  - Service Account Token Creator
+
+
+
+
+
+
+
+
+
+
 
 ### 2.2.8 - 🗒️ Homework 
 
