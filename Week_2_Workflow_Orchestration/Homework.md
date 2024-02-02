@@ -219,6 +219,9 @@ def export_data(data, *args, **kwargs):
     )
 ```
 
+## ETL-process of my homework
+![ETL-process](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/003.PNG)
+
 ## Submitting the solutions
 
 * Form for submitting: https://courses.datatalks.club/de-zoomcamp-2024/homework/hw2
