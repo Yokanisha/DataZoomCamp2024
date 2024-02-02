@@ -147,7 +147,7 @@ Which of the following creates a new column `lpep_pickup_date` by converting `lp
 
 * `data = data['lpep_pickup_datetime'].date`
 * `data('lpep_pickup_date') = data['lpep_pickup_datetime'].date`
-* `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date`
+* `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date` 👍
 * `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt().date()`
 
 ## Question 4. Data Transformation
@@ -155,9 +155,18 @@ Which of the following creates a new column `lpep_pickup_date` by converting `lp
 What are the existing values of `VendorID` in the dataset?
 
 * 1, 2, or 3
-* 1 or 2
+* 1 or 2 👍
 * 1, 2, 3, 4
 * 1
+
+```python
+@transformer
+def transform(data, *args, **kwargs):
+    unique_vendor_ids = data['VendorID'].unique()
+    print("Values of VendorID: ", unique_vendor_ids)
+
+    return data
+```
 
 ## Question 5. Data Transformation
 
@@ -166,16 +175,49 @@ How many columns need to be renamed to snake case?
 * 3
 * 6
 * 2
-* 4
+* 4 👍
+
+`VendorID`, `RatecodeID`, `PULocationID` and `DOLocationID`.
 
 ## Question 6. Data Exporting
 
 Once exported, how many partitions (folders) are present in Google Cloud?
 
-* 96
+* 96 👍 
 * 56
 * 67
 * 108
+
+I just had 95 folders
+
+```python
+
+import pyarrow as pa
+import pyarrow.parquet as pq
+import os
+
+if 'data_exporter' not in globals():
+    from mage_ai.data_preparation.decorators import data_exporter
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/src/evident-beacon-412117-da61e3f2a3ed.json"
+bucket_name = 'mage-zoomcamp-matt-palmer-1'
+project_id = 'evident-beacon-412117'
+table_name = "green_taxi"
+root_path = f'{bucket_name}/{table_name}'
+
+@data_exporter
+def export_data(data, *args, **kwargs):
+    data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date
+    table = pa.Table.from_pandas(data)
+    gcs = pa.fs.GcsFileSystem()
+
+    pq.write_to_dataset(
+        table,
+        root_path=root_path,
+        partition_cols = ['lpep_pickup_date'],
+        filesystem = gcs
+    )
+```
 
 ## Submitting the solutions
 
