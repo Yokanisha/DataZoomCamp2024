@@ -139,6 +139,12 @@ WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
 - [Partioning and Clustering](https://www.youtube.com/watch?v=jrHljAoD6nM&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)  
 - [Partioning vs Clustering](https://www.youtube.com/watch?v=-CqXf7vhhDs&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
 
+### Partitioning
+![BigQuery Partitioning](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/005.PNG)
+
+### Partitioning & Clustering
+![BigQuery Partitioning & Clustering](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/006.PNG)
+
 ## :movie_camera: Best practices
 
 - [BigQuery Best Practices](https://www.youtube.com/watch?v=k81mLJVX08w&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
