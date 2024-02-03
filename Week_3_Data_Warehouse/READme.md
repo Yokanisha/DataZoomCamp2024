@@ -230,11 +230,36 @@ BigQuery Clustering
     - As a best practice, place the table with the largest number of rows first, followed by the table with the fewest rows, and then place the remaining tables by decreasing size.
 
 
+BigQuery relies on four key infrastructure technologies:
+
+- ***Dremel***: This component handles the computation aspect of BigQuery by executing SQL queries. It transforms SQL queries into execution trees, where the leaves are referred to as "slots" responsible for reading data from storage and performing calculations. The branches, known as "mixers," handle aggregation. Dremel dynamically allocates slots to queries while ensuring fairness for concurrent queries from multiple users.
+- ***Colossus***: Google's global storage system is leveraged by BigQuery. It employs a columnar storage format and compression algorithms for efficient data storage. Colossus is optimized for reading large volumes of structured data and manages tasks such as replication, recovery, and distributed management.
+- ***Jupiter***: This is the network that facilitates communication between Dremel and Colossus. Jupiter is an in-house network technology developed by Google for interconnecting its data centers.
+- ***Borg***: Serving as an orchestration solution, Borg handles various aspects of the infrastructure. It is a precursor to Kubernetes, managing tasks related to the coordination and deployment of services within the BigQuery ecosystem.
 
 
+![infrastructure](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/007.PNG)
 
 
+### Record-oriented vs column-oriented storage
+Traditional methods for storing tabular data are record-oriented, also known as row-oriented. Data is read sequentially, row by row, and then the columns are accessed per row. An example of this is a CSV file, where each new line in the file represents a record, and all the information for that specific record is contained within that line.
 
+BigQuery, on the other hand, utilizes a columnar storage format. Data is stored based on the columns of the table rather than the rows. This approach proves beneficial when dealing with massive amounts of data because it allows us to immediately discard columns not of interest when performing queries, thereby reducing the amount of processed data.
+
+![Record and column](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/008.PNG)
+
+During the query execution process, Dremel transforms queries to construct an execution tree. Different parts of the query are assigned to various mixers, each of which further delegates smaller segments to different slots. These slots access Colossus to retrieve the required data.
+
+The choice of a columnar storage format proves ideal for this workflow. It enables rapid data retrieval from Colossus by multiple workers. These workers then conduct necessary computations on the retrieved datapoints, returning the results to the mixers. The mixers perform any required aggregations before sending the data back to the root server. Finally, the root server compiles the final output of the query.
+
+![more](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/009.PNG)
+
+
+## Reference
+- [How does BigQuery work?](https://cloud.google.com/bigquery/docs/storage_overview)
+- [Dremel: Interactive Analysis of Web-Scale Datasets](https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/)
+- [A Deep Dive Into Google BigQuery Architecture: How It Works](https://panoply.io/data-warehouse-guide/bigquery-architecture/)
+- [A look at Dremel](https://www.goldsborough.me/distributed-systems/2019/05/18/21-09-00-a_look_at_dremel/)
 
 ## :movie_camera: Internals of BigQuery
 
