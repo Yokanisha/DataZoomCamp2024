@@ -207,6 +207,29 @@ BigQuery Clustering
 
 - [BigQuery Best Practices](https://www.youtube.com/watch?v=k81mLJVX08w&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
 
+- Cost reduction
+  - Avoid SELECT *
+  - Price your queries before running them
+  - Use clustered or partitioned tables
+  - Use streaming inserts with caution
+  - Materialize query results in stages
+- Query performance
+  - Filter on partitioned columns
+  - Denormalizing data
+  - Use nested or repeated columns
+  - Use external data sources appropriately
+  - Don't use it, in case u want a high query performance
+  - Reduce data before using a JOIN
+  - Do not treat WITH clauses as prepared statements
+  - Avoid oversharding tables
+- Query performance
+  - Avoid JavaScript user-defined functions
+  - Use approximate aggregation functions (HyperLogLog++)
+  - Order Last, for query operations to maximize performance
+  - Optimize your join patterns
+    - As a best practice, place the table with the largest number of rows first, followed by the table with the fewest rows, and then place the remaining tables by decreasing size.
+
+
 
 
 
