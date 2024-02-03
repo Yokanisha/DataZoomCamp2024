@@ -142,12 +142,76 @@ WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
 ### Partitioning
 ![BigQuery Partitioning](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/005.PNG)
 
+BigQuery partition
+- Time-unit column
+- Ingestion time (_PARTITIONTIME)
+- Integer range partitioning
+- When using Time unit or ingestion time
+  - Daily (Default)
+  - Hourly
+  - Monthly or yearly
+- Number of partitions limit is 4000
+- Resource: https://cloud.google.com/bigquery/docs/partitioned-tables
+
+BigQuery Clustering
+- Columns you specify are used to colocate related data
+- Order of the column is important
+- The order of the specified columns determines the sort order of the data.
+- Clustering improves
+  - Filter queries
+  - Aggregate queries
+- Table with data size < 1 GB, don’t show significant improvement with partitioning and clustering
+- You can specify up to four clustering columns
+
+- Clustering columns must be top-level, non-repeated columns
+  - DATE
+  - BOOL
+  - GEOGRAPHY
+  - INT64
+  - NUMERIC
+  - BIGNUMERIC
+  - STRING
+  - TIMESTAMP
+  - DATETIME
+
+
+
+
 ### Partitioning & Clustering
 ![BigQuery Partitioning & Clustering](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/006.PNG)
+
+
+### Partitioning vs CLustering
+|  CLustering | Partitioning |
+|---|---|
+| Cost benefit unknown | Cost known upfront |
+| You need more granularity than partitioning alone allows | You need partition-level management |
+| Your queries commonly use filters or aggregation against multiple particular columns| Filter or aggregate on single column |
+| The cardinality of the number of values in a column or group of columns is large | Generally small if historical data is archived |
+
+### Clustering over paritioning
+- Partitioning results in a small amount of data per partition (approximately less than 1 GB)
+- Partitioning results in a large number of partitions beyond the limits on partitioned tables
+- Partitioning results in your mutation operations modifying the majority of partitions in the table frequently (for example, every few minutes)
+
+### Automatic reclustering
+- As data is added to a clustered table
+  - the newly inserted data can be written to blocks that contain key ranges that overlap with the key ranges in previously written blocks
+  - These overlapping keys weaken the sort property of the table
+- To maintain the performance characteristics of a clustered table
+  - BigQuery performs automatic re-clustering in the background to restore the sort property of the table
+  - For partitioned tables, clustering is maintained for data within the scope of each partition.
+
 
 ## :movie_camera: Best practices
 
 - [BigQuery Best Practices](https://www.youtube.com/watch?v=k81mLJVX08w&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
+
+
+
+
+
+
 
 ## :movie_camera: Internals of BigQuery
 
