@@ -413,6 +413,8 @@ tip_amount IS NOT NULL;
 ```
 
 
+
+
 **Important links**
 
 - [BigQuery ML Tutorials](https://cloud.google.com/bigquery-ml/docs/tutorials)
