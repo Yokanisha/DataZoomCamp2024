@@ -272,6 +272,23 @@ The choice of a columnar storage format proves ideal for this workflow. It enabl
 * [BigQuery Machine Learning](https://www.youtube.com/watch?v=B-WtpB0PuG4&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
 * [SQL for ML in BigQuery](big_query_ml.sql)
 
+***ML in BigQuery***
+- Target audience Data analysts, managers
+- No need for Python or Java knowledge
+- No need to export data into a different system
+
+
+***ML in BigQuery pricing (Free)***
+- 10 GB per month of data storage
+- 1 TB per month of queries processed
+- ML Create model step: First 10 GB per month is free
+
+![Pricing](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/010.PNG)
+![more](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/011.PNG)
+![more](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/012.PNG)
+
+
+
 **Important links**
 
 - [BigQuery ML Tutorials](https://cloud.google.com/bigquery-ml/docs/tutorials)
