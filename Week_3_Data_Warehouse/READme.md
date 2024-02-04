@@ -284,9 +284,133 @@ The choice of a columnar storage format proves ideal for this workflow. It enabl
 - ML Create model step: First 10 GB per month is free
 
 ![Pricing](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/010.PNG)
+
+### Introduction to BigQuery ML
+BigQuery ML lets you create and run machine learning (ML) models by using GoogleSQL queries. It also lets you access LLMs and Cloud AI APIs to perform artificial intelligence (AI) tasks like text generation or machine translation.
+
+Usually, performing ML or AI on large datasets requires extensive programming and knowledge of ML frameworks. These requirements restrict solution development to a very small set of people within each company, and they exclude data analysts who understand the data but have limited ML knowledge and programming expertise. However, with BigQuery ML, SQL practitioners can use existing SQL tools and skills to build and evaluate models, and to generate results from LLMs and Cloud AI APIs.
 ![more](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/011.PNG)
+
+[Introduction to BigQuery ML](https://cloud.google.com/bigquery/docs/bqml-introduction#model_selection_guide)
+
+***Model selection guide***
+
 ![more](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/012.PNG)
 
+[Model selection guide](https://cloud.google.com/bigquery/docs/bqml-introduction#model_selection_guide)
+
+### BigQuery ML queries
+
+```sql
+-- SELECT THE COLUMNS INTERESTED FOR YOU
+SELECT passenger_count, trip_distance, PULocationID, DOLocationID, payment_type, fare_amount, tolls_amount, tip_amount
+FROM `taxi-rides-ny.nytaxi.yellow_tripdata_partitoned` WHERE fare_amount != 0;
+```
+
+```sql
+-- CREATE A ML TABLE WITH APPROPRIATE TYPE
+CREATE OR REPLACE TABLE `taxi-rides-ny.nytaxi.yellow_tripdata_ml` (
+`passenger_count` INTEGER,
+`trip_distance` FLOAT64,
+`PULocationID` STRING,
+`DOLocationID` STRING,
+`payment_type` STRING,
+`fare_amount` FLOAT64,
+`tolls_amount` FLOAT64,
+`tip_amount` FLOAT64
+) AS (
+SELECT passenger_count, trip_distance, cast(PULocationID AS STRING), CAST(DOLocationID AS STRING),
+CAST(payment_type AS STRING), fare_amount, tolls_amount, tip_amount
+FROM `taxi-rides-ny.nytaxi.yellow_tripdata_partitoned` WHERE fare_amount != 0
+);
+```
+
+```sql
+-- CREATE MODEL WITH DEFAULT SETTING
+CREATE OR REPLACE MODEL `taxi-rides-ny.nytaxi.tip_model`
+OPTIONS
+(model_type='linear_reg',
+input_label_cols=['tip_amount'],
+DATA_SPLIT_METHOD='AUTO_SPLIT') AS
+SELECT
+*
+FROM
+`taxi-rides-ny.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL;
+```
+
+```sql
+-- CHECK FEATURES
+SELECT * FROM ML.FEATURE_INFO(MODEL `taxi-rides-ny.nytaxi.tip_model`);
+```
+
+```sql
+-- EVALUATE THE MODEL
+SELECT
+*
+FROM
+ML.EVALUATE(MODEL `taxi-rides-ny.nytaxi.tip_model`,
+(
+SELECT
+*
+FROM
+`taxi-rides-ny.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL
+));
+```
+
+```sql
+-- PREDICT THE MODEL
+SELECT
+*
+FROM
+ML.PREDICT(MODEL `taxi-rides-ny.nytaxi.tip_model`,
+(
+SELECT
+*
+FROM
+`taxi-rides-ny.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL
+));
+```
+
+```sql
+-- PREDICT AND EXPLAIN
+SELECT
+*
+FROM
+ML.EXPLAIN_PREDICT(MODEL `taxi-rides-ny.nytaxi.tip_model`,
+(
+SELECT
+*
+FROM
+`taxi-rides-ny.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL
+), STRUCT(3 as top_k_features));
+```
+
+```sql
+-- HYPER PARAM TUNNING
+CREATE OR REPLACE MODEL `taxi-rides-ny.nytaxi.tip_hyperparam_model`
+OPTIONS
+(model_type='linear_reg',
+input_label_cols=['tip_amount'],
+DATA_SPLIT_METHOD='AUTO_SPLIT',
+num_trials=5,
+max_parallel_trials=2,
+l1_reg=hparam_range(0, 20),
+l2_reg=hparam_candidates([0, 0.1, 1, 10])) AS
+SELECT
+*
+FROM
+`taxi-rides-ny.nytaxi.yellow_tripdata_ml`
+WHERE
+tip_amount IS NOT NULL;
+```
 
 
 **Important links**
