@@ -12,21 +12,64 @@ Create an external table using the Green Taxi Trip Records Data for 2022. </br>
 Create a table in BQ using the Green Taxi Trip Records for 2022 (do not partition or cluster this table). </br>
 </p>
 
+### ***My approach***
+- Just download all Green Taxi Trip Record Parquet Files from 2022 and save it in your local environment.
+- In gcp storage, create a new folder and put all the green Taxi Trip Record Files via drag-and-drop.
+- This is my path: mage-zoomcamp-matt-palmer-1/green_tripdata_2022
+- Create `green_taxi` folder in BigQuery with Cloud Shell terminal:
+```bash
+Welcome to Cloud Shell! Type "help" to get started.
+Your Cloud Platform project in this session is set to evident-beacon-412117.
+Use “gcloud config set project [PROJECT_ID]” to change to a different project.
+fatihoezkan93@cloudshell:~ (evident-beacon-412117)$ bq mk --location=EU evident-beacon-412117:green_taxi
+Dataset 'evident-beacon-412117:green_taxi' successfully created.
+fatihoezkan93@cloudshell:~ (evident-beacon-412117)$
+```
+***Create the external table:***
+
+```sql
+CREATE OR REPLACE EXTERNAL TABLE `evident-beacon-412117.green_taxi.external_green_tripdata`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://mage-zoomcamp-matt-palmer-1/green_tripdata_2022/green_tripdata_2022-*.parquet']
+);
+```
+***Create the table from the external table:***
+```sql
+CREATE TABLE `evident-beacon-412117.green_taxi.green_tripdata`
+AS
+SELECT *
+FROM `evident-beacon-412117.green_taxi.external_green_tripdata`;
+```
+
+
 ## Question 1:
 Question 1: What is count of records for the 2022 Green Taxi Data??
 - 65,623,481
-- 840,402
+- 840,402 👍
 - 1,936,423
 - 253,647
+
+```sql
+select count(*) from `evident-beacon-412117.green_taxi.external_green_tripdata`
+```
 
 ## Question 2:
 Write a query to count the distinct number of PULocationIDs for the entire dataset on both the tables.</br> 
 What is the estimated amount of data that will be read when this query is executed on the External Table and the Table?
 
-- 0 MB for the External Table and 6.41MB for the Materialized Table
+- 0 MB for the External Table and 6.41MB for the Materialized Table 👍
 - 18.82 MB for the External Table and 47.60 MB for the Materialized Table
 - 0 MB for the External Table and 0MB for the Materialized Table
 - 2.14 MB for the External Table and 0MB for the Materialized Table
+
+```sql
+select distinct count(PULocationID) from `evident-beacon-412117.green_taxi.external_green_tripdata`;
+```
+```sql
+select distinct count(PULocationID) from `evident-beacon-412117.green_taxi.green_tripdata`;
+```
+
 
 
 ## Question 3:
