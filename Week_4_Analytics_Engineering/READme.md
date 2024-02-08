@@ -110,6 +110,34 @@ Postgres
 | - Starting a new project with dbt init (dbt cloud and core)<br>- dbt cloud setup<br>- project.yml<br><br> | - Starting a new project with dbt init (dbt cloud and core)<br>- dbt core local setup<br>- profiles.yml<br>- project.yml                                  |
 | [![](https://markdown-videos-api.jorgenkh.no/youtube/iMxh6s_wL4Q)](https://youtu.be/iMxh6s_wL4Q&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=42) | [![](https://markdown-videos-api.jorgenkh.no/youtube/1HmL63e-vRs)](https://youtu.be/1HmL63e-vRs&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=43) |
 
+
+### ALternative A
+- create a project
+- create a new gcp project
+- connect dbt with bigquery (use json-keys)
+- Connect dbt with your reposiotry (github)
+  - Put your Project subdirectory
+- Go to **Develop**
+- Create a new Branch
+- Initialize dbt project
+- go to dbt_project.yml and change the `name`
+  - go down to **models:** and replace the name here
+
+
+```yml
+name: 'taxi_rides_ny'
+version: '1.0.0'
+config-version: 2
+
+...
+models:
+  taxi_rides_ny:
+
+```
+
+
+
+
 ### dbt models
 
 * Anatomy of a dbt model: written code vs compiled Sources
