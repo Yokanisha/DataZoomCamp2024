@@ -47,9 +47,9 @@ By this stage of the course you should have already:
 
 [![](https://markdown-videos-api.jorgenkh.no/youtube/uF76d5EmdtU)](https://youtu.be/uF76d5EmdtU&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=40)
 
-# [ETL vs. ELT](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/013.PNG)
+# ![ETL vs. ELT](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/013.PNG)
 
-**Architecture of DImensional Modeling***
+### Architecture of Dimensional Modeling
 
 ***Stage Area***
 - Contains the raw data
@@ -65,11 +65,42 @@ By this stage of the course you should have already:
 - Exposure to business stakeholder
 
 
+
+
 ### What is dbt? 
 
 * Introduction to dbt 
 
 [![](https://markdown-videos-api.jorgenkh.no/youtube/4eCouvVOJUw)](https://youtu.be/4eCouvVOJUw&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=41)
+
+**What is dbt?***
+
+dbt is a transformation worklfow that allows anyone that knows SQL to deploy analytics code following software engineering best practice like modularity, portability, CI/CD and documentation.
+
+# ![dbt](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/014.PNG)
+
+
+**How to use dbt?**
+
+# ![How to use dbt](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/015.PNG)
+
+**How are we doing to use dbt?**
+
+BigQuery
+- Development using cloud IDE
+- No local installation of dbt core
+
+Postgres
+- Development using a local IDE of your choice
+- Local installation of dbt core connecting to the Postgres database
+- Running dbt models through the CLI
+
+  
+# ![How are we going to use](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/016.PNG)
+
+
+
+
 
 ## Starting a dbt project
 
