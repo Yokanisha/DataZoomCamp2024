@@ -14,6 +14,63 @@ By this stage of the course you should have already:
 > [!NOTE]  
 > * A quick hack has been shared to load that data quicker, check instructions in [week3/extras](../03-data-warehouse/extras)
 
+### It didn't work for me so I did that on my way
+
+**Execute the folowwing script - for yellow and green data**
+
+```python
+import os
+import pandas as pd
+
+# Liste von URLs
+url_list = [
+        'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2019-01.csv.gz',
+        'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2019-02.csv.gz',
+        'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2019-03.csv.gz',
+ #...
+
+        'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2020-01.csv.gz',
+        'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2020-02.csv.gz',
+        'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2020-03.csv.gz',
+#...
+    # Füge hier weitere URLs hinzu, falls notwendig
+]
+
+# Verzeichnis zum Speichern der Parquet-Dateien
+output_directory = r'D:\DE-ZoomCamp\week_4_analytic\yellow_taxi' #Directory for yellow data
+
+# Überprüfen, ob das Ausgabeverzeichnis existiert, falls nicht, erstelle es
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)
+
+for url in url_list:
+    # Dateiname aus der URL extrahieren
+    file_name = url.split('/')[-1]
+
+    # Lade die CSV-Datei von der URL
+    df = pd.read_csv(url)
+
+    # Speichere die Daten im Parquet-Format
+    parquet_file = os.path.join(output_directory, file_name.split('.')[0] + '.parquet')
+    df.to_parquet(parquet_file, engine='pyarrow')
+
+    print(f'Daten von {url} erfolgreich in {parquet_file} gespeichert.')
+
+```
+
+- Upload it in your bucket.
+- Upload it in the folder `green` and `yellow`
+- Go to your BigQuery and execute (do it also for the green data)
+
+```sql
+CREATE OR REPLACE EXTERNAL TABLE `evident-beacon-412117.trips_data_all.yellow_tripdata`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://week_4_analytics/yellow/yellow_tripdata_2019-*.parquet', 'gs://week_4_analytics/yellow/yellow_tripdata_2020-*.parquet']
+);
+```
+
+
 > [!TIP] 
 >* If you recieve an error stating "Permission denied while globbing file pattern." when attempting to run `fact_trips.sql` this video may be helpful in resolving the issue
 >
