@@ -47,6 +47,24 @@ By this stage of the course you should have already:
 
 [![](https://markdown-videos-api.jorgenkh.no/youtube/uF76d5EmdtU)](https://youtu.be/uF76d5EmdtU&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=40)
 
+# [ETL vs. ELT](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/013.PNG)
+
+**Architecture of DImensional Modeling***
+
+***Stage Area***
+- Contains the raw data
+- Not meant to be exposed to everyone
+
+***Processing area***
+- From raw data to data models
+- Focuses in efficiency
+- Ensuring standards
+
+***Presentation area***
+- Final presentation of the data
+- Exposure to business stakeholder
+
+
 ### What is dbt? 
 
 * Introduction to dbt 
