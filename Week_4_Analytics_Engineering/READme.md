@@ -81,6 +81,9 @@ OPTIONS (
 
 
 ```
+> [!NOTE]
+>* When creating a bucket, make sure not to choose `multi-region`. Instead choose a region like `us-west2`.
+>  
 
 
 > [!TIP] 
