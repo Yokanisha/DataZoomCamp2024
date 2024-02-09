@@ -66,16 +66,20 @@ for url in url_list:
 CREATE OR REPLACE EXTERNAL TABLE `evident-beacon-412117.trips_data_all.yellow_tripdata`
 OPTIONS (
   format = 'PARQUET',
-  uris = ['gs://week_4_analytics/yellow/yellow_tripdata_2019-*.parquet', 'gs://week_4_analytics/yellow/yellow_tripdata_2020-*.parquet']
+  uris = ['gs://analytic_week4/yellow/yellow_tripdata_2019-*.parquet', 'gs://analytic_week4/yellow/yellow_tripdata_2020-*.parquet']
 );
+
+
 ```
 
 ```sql
 CREATE OR REPLACE EXTERNAL TABLE `evident-beacon-412117.trips_data_all.green_tripdata`
 OPTIONS (
   format = 'PARQUET',
-  uris = ['gs://week_4_analytics/green/green_tripdata_2019-*.parquet', 'gs://week_4_analytics/green/green_tripdata_2020-*.parquet']
+  uris = ['gs://analytic_week4/green/green_tripdata_2019-*.parquet', 'gs://analytic_week4/yelgreenlow/green_tripdata_2020-*.parquet']
 );
+
+
 ```
 
 
