@@ -70,6 +70,14 @@ OPTIONS (
 );
 ```
 
+```sql
+CREATE OR REPLACE EXTERNAL TABLE `evident-beacon-412117.trips_data_all.green_tripdata`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://week_4_analytics/green/green_tripdata_2019-*.parquet', 'gs://week_4_analytics/green/green_tripdata_2020-*.parquet']
+);
+```
+
 
 > [!TIP] 
 >* If you recieve an error stating "Permission denied while globbing file pattern." when attempting to run `fact_trips.sql` this video may be helpful in resolving the issue
