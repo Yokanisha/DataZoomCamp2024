@@ -9,19 +9,19 @@ with tripdata as
 )
 select
     -- identifiers
-    {{ dbt_utils.surrogate_key(['vendorid', 'tpep_pickup_datetime']) }} as tripid,
+    {{ dbt_utils.generate_surrogate_key(['vendorid', 'tpep_pickup_datetime']) }} as tripid,
     cast(vendorid as integer) as vendorid,
     cast(ratecodeid as integer) as ratecodeid,
     cast(pulocationid as integer) as  pickup_locationid,
     cast(dolocationid as integer) as dropoff_locationid,
     
     -- timestamps
-    cast(tpep_pickup_datetime as timestamp) as pickup_datetime,
-    cast(tpep_dropoff_datetime as timestamp) as dropoff_datetime,
+    cast(tpep_pickup_datetime as integer) as pickup_datetime,
+    cast(tpep_dropoff_datetime as integer) as dropoff_datetime,
     
     -- trip info
     store_and_fwd_flag,
-    cast(passenger_count as integer) as passenger_count,
+    CAST(passenger_count AS integer) AS passenger_count,
     cast(trip_distance as numeric) as trip_distance,
     --cast(trip_type as integer) as trip_type,
     1 as trip_type,
@@ -41,7 +41,8 @@ select
 from tripdata
 where rn = 1
 
-{% if var('is_test_run', default=true) %}
+-- dbt build --select <model_name> --vars '{'is_test_run': 'false'}'
+{% if var('is_test_run', default=false) %}
 
     limit 100
 
