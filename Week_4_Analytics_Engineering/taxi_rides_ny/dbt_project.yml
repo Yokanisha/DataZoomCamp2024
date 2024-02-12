@@ -39,4 +39,6 @@ models:
   taxi_rides_ny:
   
 vars:
-  payment_type_values: [1, 2, 3, 4, 5]
+  payment_type_values: [1, 2, 3, 4, 5, 6]
+
+  surrogate_key_treat_nulls_as_empty_strings: True
