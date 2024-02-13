@@ -1,4 +1,8 @@
 
+
+
+
+  
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -37,11 +41,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 
 vars:
-  dbt_utils:
-  surrogate_key_coalesce_nulls_to: "''"     
   surrogate_key_treat_nulls_as_empty_strings: True
   payment_type_values: [1, 2, 3, 4, 5, 6]
-  
+
 
 models:
   taxi_rides_ny:
