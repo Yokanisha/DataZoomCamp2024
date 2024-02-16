@@ -4,11 +4,41 @@
 
 * :movie_camera: 5.1.1 Introduction to Batch Processing
 
-  -
+BILD 022
+BILD 023
+
+- Batch Jobs
+  - Weekly
+  - Daily
+  - Hourly
+  - 3 times per hour
+  - Every 5 minutes
+ 
+- Technologies
+  - Python scripts (Kubernetes, AWS Batch, ...)
+  - SQL
+  - Spark
+  - Flink
+ 
+BILD 024
+
+- Advantages of Batch
+  - Easy to manage
+  - Retry
+  - Scale
+
+ - Disadvantage
+   - Delay 
+   - Higher Latency
+   - Less Responsive
 
 * :movie_camera: 5.1.2 Introduction to Spark
 
--
+BILD 025
+BILD 026
+BILD 027
+
+
 
 ## 5.2 Installation
 
