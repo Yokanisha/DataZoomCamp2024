@@ -64,13 +64,21 @@ And follow [this](setup/pyspark.md) to run PySpark in Jupyter
 
 * :movie_camera: 5.3.1 First Look at Spark/PySpark
 
-
+BILD 028
 -
 
 * :movie_camera: 5.3.2 Spark Dataframes
 
-
--
+ Actions vs Transformation
+- Transformations - lazy (not exectued immediately)
+  -   Selecting columns
+  -   Filtering
+  -   ...
+- Actions - eager (executed immediately)
+  - Show, take, head
+  - Write
+ 
+  BILD 029
 
 * :movie_camera: 5.3.3 (Optional) Preparing Yellow and Green Taxi Data
 
