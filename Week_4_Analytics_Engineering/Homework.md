@@ -24,8 +24,19 @@ instead. If you have access to GCP, you don't need to do it for local Postgres -
 You'll need to have completed the ["Build the first dbt models"](https://www.youtube.com/watch?v=UVI30Vxzd6c) video. 
 - It's the same as running *dbt build*
 - It applies a _limit 100_ to all of our models
-- It applies a _limit 100_ only to our staging models
+- It applies a _limit 100_ only to our staging models 👍
 - Nothing
+
+#### Solution
+```
+When you execute dbt build --vars '{"is_test_run":"true"}', it will apply a limit of 100 only to the models where the conditional {% if var('is_test_run', default=true) %} evaluates to true. In this case, the conditional statement checks if the variable is_test_run is set to true. If it is true, then the limit 100 will be applied.
+So, the correct answer is:
+It applies a limit 100 only to our staging models
+
+So, the correct answer is:
+
+It applies a limit 100 only to our staging models
+```
 
 ### Question 2: 
 
