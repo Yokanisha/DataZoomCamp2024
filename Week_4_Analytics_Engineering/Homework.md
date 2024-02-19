@@ -102,6 +102,35 @@ Create a dashboard with some tiles that you find interesting to explore the data
 - Yellow
 - FHV and Green
 
+#### Solution
+
+```sql
+SELECT
+  service_type,
+  COUNT(pickup_datetime) AS pickup_datetime, 
+  COUNT(dropoff_datetime) AS dropoff_datetime
+FROM `evident-beacon-412117.dbt_fozkan.fact_fhv_trips` 
+WHERE EXTRACT(MONTH FROM pickup_datetime) = 7
+AND EXTRACT(YEAR FROM pickup_datetime) = 2019
+group by 1
+
+UNION ALL
+
+SELECT
+  service_type,
+  COUNT(pickup_datetime) AS pickup_datetime, 
+  COUNT(dropoff_datetime) AS dropoff_datetime
+FROM `evident-beacon-412117.dbt_fozkan.fact_trips` 
+WHERE EXTRACT(MONTH FROM pickup_datetime) = 7
+AND EXTRACT(YEAR FROM pickup_datetime) = 2019
+group by 1
+```
+counts
+```
+Yellow: 3.243.734
+Green: 397.615
+fhv: 290.680
+```
 
 ## Submitting the solutions
 
