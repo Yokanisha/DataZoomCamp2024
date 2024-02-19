@@ -99,7 +99,7 @@ Create a dashboard with some tiles that you find interesting to explore the data
 
 - FHV
 - Green
-- Yellow
+- Yellow 👍
 - FHV and Green
 
 #### Solution
@@ -131,6 +131,9 @@ Yellow: 3.243.734
 Green: 397.615
 fhv: 290.680
 ```
+
+BILD 034
+
 
 ## Submitting the solutions
 
