@@ -18,6 +18,22 @@ instead. If you have access to GCP, you don't need to do it for local Postgres -
 
 > **Note**: if your answer doesn't match exactly, select the closest option 
 
+```python
+###
+
+```
+
+
+```sql
+CREATE OR REPLACE EXTERNAL TABLE `evident-beacon-412117.trips_data_all.fhv_tripdata`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://analytic_week4/fhv/fhv_tripdata_2019-*.parquet']
+);
+```
+
+
+
 ### Question 1: 
 
 **What happens when we execute dbt build --vars '{'is_test_run':'true'}'**
