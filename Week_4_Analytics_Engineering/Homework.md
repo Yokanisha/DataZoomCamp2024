@@ -61,7 +61,7 @@ It applies a limit 100 only to our staging models
 - The code that has been merged into the main branch
 - The code that is behind the object on the dbt_cloud_pr_ schema
 - The code from any development branch that has been opened based on main
-- The code from a development branch requesting a merge to main
+- The code from a development branch requesting a merge to main 👍
 
 #### Solution
 
