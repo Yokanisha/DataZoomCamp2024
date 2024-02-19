@@ -47,7 +47,15 @@ It applies a limit 100 only to our staging models
 - The code from any development branch that has been opened based on main
 - The code from a development branch requesting a merge to main
 
+#### Solution
 
+```
+The CI (Continuous Integration) job typically runs the code from a development branch that is requesting a merge to the main branch. This allows for automated testing of the changes made in the development branch before merging them into the main branch, ensuring that the main branch remains stable.
+
+So, the correct answer is:
+
+The code from a development branch requesting a merge to main
+```
 ### Question 3 (2 points)
 
 **What is the count of records in the model fact_fhv_trips after running all dependencies with the test run variable disabled (:false)?**  
