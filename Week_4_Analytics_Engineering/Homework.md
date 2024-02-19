@@ -132,7 +132,7 @@ Green: 397.615
 fhv: 290.680
 ```
 
-BILD 034
+![Week4_homework_Report](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Images/034.PNG)
 
 
 ## Submitting the solutions
