@@ -23,6 +23,10 @@ models:
       ####
       ###
       ##
+  
+  - name: trips
+    description: >
+      It is a combinition of fact:trips and fact_fhv_trips
 
       
   - name: fact_trips
