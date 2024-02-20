@@ -126,6 +126,20 @@ Script to prepare the Dataset [download_data.sh](code/download_data.sh)
 
 * :movie_camera: 5.6.2 Creating a Local Spark Cluster
 
+#### Run Local Cluster Spark in Windows 10 with CMD
+Go to `%SPARK_HOME%\bin `
+Run `spark-class org.apache.spark.deploy.master.Master` to run the master. This will give you a URL of the form `spark://ip:port`
+Run `spark-class org.apache.spark.deploy.worker.Worker spark://ip:port` to run the worker. Make sure you use the URL you obtained in step 2.
+Create a new Jupyter notebook:
+```python
+spark = SparkSession.builder \
+    .master("spark://192.168.0.38:7077") \
+    .appName('test') \
+    .getOrCreate()
+```
+ Check on Spark UI the master, worker and app.
+
+
 -
 
 * :movie_camera: 5.6.3 Setting up a Dataproc Cluster
