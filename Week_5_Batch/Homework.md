@@ -4,6 +4,9 @@ In this homework we'll put what we learned about Spark in practice.
 
 For this homework we will be using the FHV 2019-10 data found here. [FHV Data](https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhv/fhv_tripdata_2019-10.csv.gz)
 
+### Solution
+[Homework_pySpark](https://github.com/Yokanisha/DataZoomCamp2024/blob/main/Week_5_Batch/Homework_pySpark.ipynb)
+
 ### Question 1: 
 
 **Install Spark and PySpark** 
