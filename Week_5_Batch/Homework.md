@@ -15,6 +15,8 @@ For this homework we will be using the FHV 2019-10 data found here. [FHV Data](h
 
 What's the output?
 
+`'3.5.0'` 👍
+
 > [!NOTE]
 > To install PySpark follow this [guide](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/05-batch/setup/pyspark.md)
 
@@ -29,7 +31,7 @@ Repartition the Dataframe to 6 partitions and save it to parquet.
 What is the average size of the Parquet (ending with .parquet extension) Files that were created (in MB)? Select the answer which most closely matches.
 
 - 1MB
-- 6MB
+- 6MB 👍
 - 25MB
 - 87MB
 
@@ -46,7 +48,7 @@ Consider only trips that started on the 15th of October.
 - 108,164
 - 12,856
 - 452,470
-- 62,610
+- 62,610 👍
 
 > [!IMPORTANT]
 > Be aware of columns order when defining schema
@@ -57,7 +59,7 @@ Consider only trips that started on the 15th of October.
 
 What is the length of the longest trip in the dataset in hours?
 
-- 631,152.50 Hours
+- 631,152.50 Hours 👍
 - 243.44 Hours
 - 7.68 Hours
 - 3.32 Hours
@@ -72,9 +74,11 @@ Spark’s User Interface which shows the application's dashboard runs on which l
 
 - 80
 - 443
-- 4040
+- 4040 👍
 - 8080
 
+#### Solution
+Just type in browser `http://localhost:4040`
 
 
 ### Question 6: 
@@ -87,7 +91,7 @@ Load the zone lookup data into a temp view in Spark</br>
 Using the zone lookup data and the FHV October 2019 data, what is the name of the LEAST frequent pickup location Zone?</br>
 
 - East Chelsea
-- Jamaica Bay
+- Jamaica Bay 👍
 - Union Sq
 - Crown Heights North
 
