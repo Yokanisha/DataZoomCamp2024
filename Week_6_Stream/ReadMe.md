@@ -34,8 +34,7 @@ ModuleNotFoundError: No module named 'kafka'
 
 ### How to fix: ModuleNotFoundError: Nomodule named 'kafka'
 
-- go to your project file and type
-- 
+- Navigate to your project file and type
 ```bash
 Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_6_stream_python/python
 $ python -m venv env
@@ -70,7 +69,37 @@ You should consider upgrading via the 'D:\DE-ZoomCamp\week_6_stream_python\pytho
 
 ```
 - To install run `pip install kafka-python`
-- Go to your producer.py file and run `python producer.py`
+- Navigate to your producer.py file and run `python producer.py`
 - Now, it should work.
 - for deactivate run `deactivate`
 - To activate it (you'll need to run it every time you need the virtual env): `./env/Scripts/activate`
+
+### Run scripts
+- Run `python producer.py`
+```bash
+Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_6_stream_python/python/json_example
+$ python producer.py
+Record 238 successfully produced at offset 0
+Record 138 successfully produced at offset 1
+Record 230 successfully produced at offset 2
+Record 88 successfully produced at offset 3
+Record 37 successfully produced at offset 4
+Record 140 successfully produced at offset 5
+Record 137 successfully produced at offset 6
+...
+```
+- Run `python consumer.py`
+```bash
+Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_6_stream_python/python/json_example
+$ python consumer.py
+Consuming from Kafka started
+Available topics to consume:  {'rides_json'}
+238 Ride: {'vendor_id': '1', 'tpep_pickup_datetime': (datetime.datetime(2020, 7, 1, 0, 25, 32),), 'tpep_dropoff_datetime': (datetime.datetime(2020, 7, 1, 0, 33, 39),), 'passenger_count': 1, 'trip_distance': Decimal('1.50'), 'rate_code_id': 1, 'store_and_fwd_flag': 'N', 'pu_location_id': 238, 'do_location_id': 75, 'payment_type': '2', 'fare_amount': Decimal('8'), 'extra': Decimal('0.5'), 'mta_tax': Decimal('0.5'), 'tip_amount': Decimal('0'), 'tolls_amount': Decimal('0'), 'improvement_surcharge': Decimal('0.3'), 'total_amount': Decimal('9.3'), 'congestion_surcharge': Decimal('0')}
+138 Ride: {'vendor_id': '1', 'tpep_pickup_datetime': (datetime.datetime(2020, 7, 1, 0, 3, 19),), 'tpep_dropoff_datetime': (datetime.datetime(2020, 7, 1, 0, 25, 43),), 'passenger_count': 1, 'trip_distance': Decimal('9.50'), 'rate_code_id': 1, 'store_and_fwd_flag': 'N', 'pu_location_id': 138, 'do_location_id': 216, 'payment_type': '1', 'fare_amount': Decimal('26.5'), 'extra': Decimal('0.5'), 'mta_tax': Decimal('0.5'), 'tip_amount': Decimal('0'), 'tolls_amount': Decimal('0'), 'improvement_surcharge': Decimal('0.3'), 'total_amount': Decimal('27.8'), 'congestion_surcharge': Decimal('0')}
+...
+```
+
+### AVRO
+
+
+
