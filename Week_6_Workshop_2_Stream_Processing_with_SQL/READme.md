@@ -30,41 +30,11 @@
 </p>
 
 
-# What is RisingWave?
-BILD 035
-BILD 036
-BILD 037
-PPT 11
-PPT 14
+# Read me
+Unfortunately, my CPU doesn't support AVX2, which is necessary to run RisingWave. For that reason, I've decided to use CodeSpace as my virtual machine. To access the repository where you will find all necessary information, such as workshop and my homework, click [here](https://github.com/Yokanisha/CodespacesZoomCamp2024).
 
 
 
 
-# Prerequisites
 
-- Docker and Docker Compose
-- Python 3.7 or later
-- pip and virtualenv for Python
-- psql (I use PostgreSQL-14.9)
-- Clone this repository:
-```
-$ git clone https://github.com/risingwavelabs/risingwave-data-talks-workshop-2024-03-04.git
-```
-
-- Run some diagnostics.
-- Start the RisingWave cluster.
-- Setup our python environment.
-```bash
-# Check version of psql
-psql --version
-./commands.sh
-
-# Start the RW cluster
-start-cluster
-
-# Setup python
-python3 -m venv .venv
-.venv/Scripts/activate
-pip install -r requirements.txt
-```
 
