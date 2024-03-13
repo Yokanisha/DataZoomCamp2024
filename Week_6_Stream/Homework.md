@@ -41,7 +41,15 @@ Find out what you need to execute based on the `help` output.
 
 What's the version, based on the output of the command you executed? (copy the entire version)
 
+### Solution
 
+`winpty docker exec -it redpanda-1 rpk version`
+
+```bash
+Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_6_stream_redpanda
+$ winpty docker exec -it redpanda-1 rpk version
+v22.3.5 (rev 28b2443)
+```
 ## Question 2. Creating a topic
 
 Before we can send data to the redpanda server, we
