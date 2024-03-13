@@ -61,6 +61,13 @@ Read the output of `help` and based on it, create a topic with name `test-topic`
 
 What's the output of the command for creating a topic?
 
+### Solution
+```bash
+Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_6_stream_redpanda
+$ winpty docker exec -it redpanda-1 rpk topic create test-topic
+TOPIC       STATUS
+test-topic  OK
+```
 
 ## Question 3. Connecting to the Kafka server
 
