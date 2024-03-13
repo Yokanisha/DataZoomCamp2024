@@ -108,6 +108,28 @@ producer.bootstrap_connected()
 Provided that you can connect to the server, what's the output
 of the last command?
 
+### Solution
+
+Create first a virtual environment
+
+```bash
+# Create a new directory for your project
+mkdir my_project
+cd my_project
+
+# Create a virtual environment
+python -m venv env
+
+# Activate the virtual environment
+source env/bin/activate
+```
+
+run the script
+
+The outputof the last command:
+--> `True`
+
+
 
 ## Question 4. Sending data to the stream
 
@@ -132,12 +154,55 @@ print(f'took {(t1 - t0):.2f} seconds')
 
 How much time did it take? Where did it spend most of the time?
 
-* Sending the messages
+* Sending the messages 👍
 * Flushing
 * Both took approximately the same amount of time
 
 (Don't remove `time.sleep` when answering this question)
 
+### Solution
+
+```python
+t0 = time.time()
+topic_name = 'test-topic'
+send_start = time.time()
+
+for i in range(10):
+    message = {'number': i}
+    producer.send(topic_name, value=message)
+    print(f"Sent: {message}")
+    time.sleep(0.05)
+
+send_end = time.time()
+
+flush_start = time.time()
+producer.flush()
+flush_end = time.time()
+
+total_time = time.time() - t0
+
+print(f'Time taken for sending messages: {(send_end - send_start):.2f} seconds')
+print(f'Time taken for flushing: {(flush_end - flush_start):.2f} seconds')
+print(f'Total time: {total_time:.2f} seconds')
+```
+
+```
+Sent: {'number': 0}
+Sent: {'number': 1}
+Sent: {'number': 2}
+Sent: {'number': 3}
+Sent: {'number': 4}
+Sent: {'number': 5}
+Sent: {'number': 6}
+Sent: {'number': 7}
+Sent: {'number': 8}
+Sent: {'number': 9}
+Time taken for sending messages: 0.61 seconds
+Time taken for flushing: 0.00 seconds
+Total time: 0.61 seconds
+```
+
+Most of the time 
 
 ## Reading data with `rpk`
 
