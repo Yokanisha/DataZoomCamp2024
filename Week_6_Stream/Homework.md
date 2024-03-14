@@ -384,6 +384,8 @@ green_stream = green_stream \
 
 How does the record look after parsing? Copy the output 
 
+### Solution
+`DataFrame[lpep_pickup_datetime: string, lpep_dropoff_datetime: string, PULocationID: int, DOLocationID: int, passenger_count: double, trip_distance: double, tip_amount: double]`
 
 ### Question 7: Most popular destination
 
