@@ -252,6 +252,38 @@ to `iterrows`
 * How much time in seconds did it take? (You can round it to a whole number)
 * Make sure you don't include sleeps in your code
 
+### Solution
+```bash
+Armut@Armut-PC MINGW64 /d/DE-ZoomCamp/week_6_stream_redpanda
+$ winpty docker exec -it redpanda-1 rpk topic create green-trips
+TOPIC       STATUS
+green-trips  OK
+```
+
+```python
+import pandas as pd
+file_path = 'D:/DE-ZoomCamp/week_6_stream_redpanda/data/green_tripdata_2019-10.csv.gz'
+selected_columns = ['lpep_pickup_datetime', 'lpep_dropoff_datetime', 'PULocationID', 'DOLocationID', 'passenger_count', 'trip_distance', 'tip_amount']
+df_green = pd.read_csv(file_path, usecols=selected_columns, na_values=['', 'NA'], na_filter=False)
+```
+
+```python
+t0 = time.time()
+topic_name = 'green-trips'
+
+for row in df_green.itertuples(index=False):
+    message = {col: getattr(row, col) for col in row._fields}
+    producer.send(topic_name, value=message)
+    print(f"Sent: {message}")
+    
+producer.flush()
+
+t1 = time.time()
+
+print(f'took {(t1 - t0):.2f} seconds')
+```
+
+`took 107.03 seconds`
 
 ## Creating the PySpark consumer
 
